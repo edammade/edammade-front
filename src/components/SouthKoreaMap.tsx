@@ -4,11 +4,11 @@ import styled, { css } from 'styled-components';
 interface ISouthKoreaMap {
   currentArea: string;
   setCurrentArea: (areaName: string) => void;
-  initialZoneID?: string;
+  initialAreaID?: string;
 }
 
-const SouthKoreaMap: React.FC<ISouthKoreaMap> = ({ currentArea, setCurrentArea, initialZoneID = 'KR-11' }) => {
-  const [zoneID, setZoneID] = useState(initialZoneID);
+const SouthKoreaMap: React.FC<ISouthKoreaMap> = ({ currentArea, setCurrentArea, initialAreaID = 'KR-11' }) => {
+  const [areaID, setAreaID] = useState(initialAreaID);
 
   useEffect(() => {
     const listener = (event: any) => {
@@ -21,7 +21,7 @@ const SouthKoreaMap: React.FC<ISouthKoreaMap> = ({ currentArea, setCurrentArea, 
         return;
       }
       const areaName = target.getAttribute('class').split(' ').pop();
-      setZoneID(target.id);
+      setAreaID(target.id);
       return setCurrentArea(areaName);
     };
 
@@ -156,7 +156,7 @@ const SouthKoreaMap: React.FC<ISouthKoreaMap> = ({ currentArea, setCurrentArea, 
           stroke="rgba(255, 0, 173, 0.1)"
           strokeWidth="3"
           id="KR-50" />
-        <use xlinkHref={`#${zoneID}`} />
+        <use xlinkHref={`#${areaID}`} />
       </MapSvg>
     </MapContainer >
   );
