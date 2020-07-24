@@ -8,7 +8,9 @@ const ServiceWrapper: React.FC = ({ children }) => {
     <Wrapper>
       <Container>
         <BrandLogo />
-        {children}
+        <ContentWrapper>
+          {children}
+        </ContentWrapper>
       </Container>
     </Wrapper>
   );
@@ -31,4 +33,8 @@ const Container = styled.div`
   @media all and (max-width: 1000px) {
     width: 85%;
   }
+`;
+
+const ContentWrapper = styled.div`
+  padding-top: 25px;
 `;
