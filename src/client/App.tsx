@@ -1,11 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
+
+import GlobalStyle from '../components/GlobalStyle';
+import ServiceWrapper from '../components/ServiceWrapper';
 
 const App: React.FC = () => {
-  return (<Container />);
+  return (
+    <>
+      <GlobalStyle />
+      <ServiceWrapper>
+      </ServiceWrapper>
+    </>
+  );
 };
 
 export default App;
-
-const Container = styled.div`
-`;
