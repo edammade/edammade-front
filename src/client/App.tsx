@@ -14,11 +14,16 @@ const App: React.FC = () => {
   const onClickPrevDay = () => setCurrentDate(new Date(currentDate.getTime() - DAYS));
   const onClickNextDay = () => setCurrentDate(new Date(currentDate.getTime() + DAYS));
 
+  const [currentArea, setCurrentArea] = useState<string>('서울특별시');
+
   return (
     <>
       <GlobalStyle />
       <ServiceWrapper>
-        <SouthKoreaMap />
+        <SouthKoreaMap
+          currentArea={currentArea}
+          setCurrentArea={setCurrentArea}
+        />
         <RightSection>
           <DateSelector
             currentDate={currentDate}

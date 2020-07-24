@@ -22,6 +22,7 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
+  min-width: 1050px;
 `;
 
 const Container = styled.div`
@@ -29,10 +30,6 @@ const Container = styled.div`
   height: 100%;
   margin: 0 auto;
   padding-top: 40px;
-
-  @media all and (max-width: 1000px) {
-    width: 85%;
-  }
 `;
 
 const ContentWrapper = styled.div`
