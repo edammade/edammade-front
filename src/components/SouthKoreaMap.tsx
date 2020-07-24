@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 const SouthKoreaMap: React.FC = () => {
+  useEffect(() => {
+    const listener = (event: any) => {
+      const { target } = event;
+      if (
+        !target
+        || target.tagName.toLowerCase() !== 'path'
+        || !target.parentNode.getAttribute('class').includes('Map')
+      ) {
+        return;
+      }
+      console.log(target.getAttribute('class'));
+    };
+
+    const body = document?.querySelector('body');
+    body?.addEventListener('click', listener, false);
+
+    return () => body?.removeEventListener('click', listener, false);
+  });
+
   return (
     <MapContainer>
       <MapSvg
+        className="Map"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
