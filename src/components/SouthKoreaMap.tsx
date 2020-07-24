@@ -1,14 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 
+import Badge from './Badge';
+
 interface ISouthKoreaMap {
   currentArea: string;
   setCurrentArea: (areaName: string) => void;
   initialAreaID?: string;
 }
 
+const areaBadgeLocations: {
+  [areaName: string]: {
+    top: number;
+    left: number;
+  };
+} = {
+  "서울특별시": { top: 90, left: 170 },
+  "부산광역시": { top: 400, left: 180 },
+  "대구광역시": { top: 290, left: 60 },
+  "인천광역시": { top: 90, left: 120 },
+  "광주광역시": { top: 400, left: 180 },
+  "대전광역시": { top: 230, left: 150 },
+  "울산광역시": { top: 420, left: 300 },
+  "경기도": { top: 120, left: 200 },
+  "강원도": { top: 110, left: 260 },
+  "충청북도": { top: 240, left: 230 },
+  "충청남도": { top: 260, left: 60 },
+  "전라북도": { top: 345, left: 60 },
+  "전라남도": { top: 450, left: 110 },
+  "경상북도": { top: 265, left: 280 },
+  "경상남도": { top: 370, left: 175 },
+  "제주특별자치도": { top: 560, left: 90 },
+  "세종특별자치시": { top: 240, left: 220 },
+};
+
 const SouthKoreaMap: React.FC<ISouthKoreaMap> = ({ currentArea, setCurrentArea, initialAreaID = 'KR-11' }) => {
-  const [areaID, setAreaID] = useState(initialAreaID);
+  const [areaID, setAreaID] = useState<string>(initialAreaID);
+  const [areaBadgeTopOffset, setAreaBadgeTopOffset] = useState<number>(90);
+  const [areaBadgeLeftOffset, setAreaBadgeLeftOffset] = useState<number>(170);
 
   useEffect(() => {
     const listener = (event: any) => {
@@ -20,8 +49,10 @@ const SouthKoreaMap: React.FC<ISouthKoreaMap> = ({ currentArea, setCurrentArea, 
       ) {
         return;
       }
-      const areaName = target.getAttribute('class').split(' ').pop();
+      const areaName: string = target.getAttribute('class').split(' ').pop();
       setAreaID(target.id);
+      setAreaBadgeTopOffset(areaBadgeLocations[areaName]?.top);
+      setAreaBadgeLeftOffset(areaBadgeLocations[areaName]?.left);
       return setCurrentArea(areaName);
     };
 
@@ -158,6 +189,12 @@ const SouthKoreaMap: React.FC<ISouthKoreaMap> = ({ currentArea, setCurrentArea, 
           id="KR-50" />
         <use xlinkHref={`#${areaID}`} />
       </MapSvg>
+      <AreaBadge
+        top={areaBadgeTopOffset}
+        left={areaBadgeLeftOffset}
+      >
+        미세먼지: 나쁨
+      </AreaBadge>
     </MapContainer >
   );
 };
@@ -171,6 +208,7 @@ const MapContainer = styled.div`
   border-radius: 32px;
   box-shadow: inset 12px 12px 30px rgba(232, 232, 232, 0.7),
     inset -12px -12px 30px #ffffff;
+  position: relative;
 `;
 
 const MapSvg = styled.svg`
@@ -199,5 +237,21 @@ const MapPath = styled.path<IMapPath>`
       fill: rgba(176, 216, 255, 0.45);
       stroke: rgba(25, 142, 255, 0.4);
     }
+  `};
+`;
+
+interface IAreaBadge {
+  top?: number;
+  left?: number;
+}
+
+const AreaBadge = styled(Badge)<IAreaBadge>`
+  position: absolute;
+  transition: all 0.2s linear;
+  pointer-events: none;
+
+  ${({ top = 0, left = 0 }) => css`
+    top: ${top}px;
+    left: ${left}px;
   `};
 `;

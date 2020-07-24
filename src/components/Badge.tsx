@@ -29,4 +29,7 @@ const BadgeContainer = styled.div`
   line-height: 1;
   font-weight: bold;
   font-size: 19px;
+  background-color: white;
+  width: fit-content;
+  box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.1);
 `;

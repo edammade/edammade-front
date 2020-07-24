@@ -60,6 +60,7 @@ const DateBadge = styled(Badge)`
   color: white;
   background-color: #FF6FAF;
   text-shadow: 5px 5px 16px rgba(255, 43, 161, 0.5);
+  box-shadow: none;
 `;
 
 const DateText = styled.span`
