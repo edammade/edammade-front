@@ -30,7 +30,7 @@ const areaBadgeLocations: {
   "전라남도": { top: 450, left: 110 },
   "경상북도": { top: 265, left: 280 },
   "경상남도": { top: 370, left: 175 },
-  "제주특별자치도": { top: 560, left: 90 },
+  "제주특별자치도": { top: 570, left: 80 },
   "세종특별자치시": { top: 240, left: 220 },
 };
 

@@ -21,7 +21,7 @@ const DateSelector: React.FC<IDateSelector> = ({
   return (
     <Wrapper>
       <DateBadge>
-        <span role="img" aria-labelledby="flower-emoji">🌸</span> 오늘
+        오늘
       </DateBadge>
       <Container>
         <LeftButton
