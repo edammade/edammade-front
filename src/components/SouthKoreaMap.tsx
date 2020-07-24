@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 interface ISouthKoreaMap {
   currentArea: string;
   setCurrentArea: (areaName: string) => void;
+  initialZoneID?: string;
 }
 
-const SouthKoreaMap: React.FC<ISouthKoreaMap> = ({ currentArea, setCurrentArea }) => {
+const SouthKoreaMap: React.FC<ISouthKoreaMap> = ({ currentArea, setCurrentArea, initialZoneID = 'KR-11' }) => {
+  const [zoneID, setZoneID] = useState(initialZoneID);
+
   useEffect(() => {
     const listener = (event: any) => {
       const { target } = event;
@@ -18,6 +21,7 @@ const SouthKoreaMap: React.FC<ISouthKoreaMap> = ({ currentArea, setCurrentArea }
         return;
       }
       const areaName = target.getAttribute('class').split(' ').pop();
+      setZoneID(target.id);
       return setCurrentArea(areaName);
     };
 
@@ -152,6 +156,7 @@ const SouthKoreaMap: React.FC<ISouthKoreaMap> = ({ currentArea, setCurrentArea }
           stroke="rgba(255, 0, 173, 0.1)"
           strokeWidth="3"
           id="KR-50" />
+        <use xlinkHref={`#${zoneID}`} />
       </MapSvg>
     </MapContainer >
   );
@@ -183,10 +188,16 @@ const MapPath = styled.path<IMapPath>`
   transition: all 0.3s ease;
 
   &:hover {
-    fill: #ffbae9;
+    fill: #ffc4ec;
   }
 
   ${({ selected }) => selected && css`
-    fill: #ff82ba;
+    fill: rgba(176, 216, 255, 0.35);
+    stroke: rgba(25, 142, 255, 0.4);
+
+    &:hover {
+      fill: rgba(176, 216, 255, 0.45);
+      stroke: rgba(25, 142, 255, 0.4);
+    }
   `};
 `;
