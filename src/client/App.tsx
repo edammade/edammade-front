@@ -38,16 +38,25 @@ const App: React.FC = () => {
               <SensorBox>
                 <SensorText>
                   17
+                  <SensorField>
+                    ㎍/㎥
+                  </SensorField>
                 </SensorText>
               </SensorBox>
               <SensorBox>
                 <SensorText>
-                  24
+                  124
+                  <SensorField>
+                    ㎍/㎥
+                  </SensorField>
                 </SensorText>
               </SensorBox>
               <SensorBox>
                 <SensorText>
                   28
+                  <SensorField>
+                    ㎍/㎥
+                  </SensorField>
                 </SensorText>
               </SensorBox>
             </SensorList>
@@ -78,12 +87,10 @@ const AreaContainer = styled.div`
   background-color: rgba(176, 216, 255, 0.35);
   border-radius: 36px;
   padding: 30px;
-  box-shadow: 13px 13px 34px #f2f2f2, 
-    -13px -13px 34px #ffffff;
 `;
 
 const AreaName = styled.span`
-  font-size: 38px;
+  font-size: 32px;
   font-weight: 900;
 `;
 
@@ -95,10 +102,10 @@ const SensorList = styled.div`
 const SensorBox = styled.div`
   background-color: rgba(176, 216, 255, 0.5);
   border: 3px solid rgba(25, 142, 255, 0.5);
-  width: 84px;
+  width: 110px;
   height: 84px;
   border-radius: 18px;
-  box-shadow: 8px 8px 12px #a9c1d9,
+  box-shadow: 8px 8px 12px rgba(169, 193, 217, 0.8),
     -8px -8px 12px rgba(229, 255, 255, 0.8);
   display: flex;
   align-items: center;
@@ -110,10 +117,19 @@ const SensorBox = styled.div`
 `;
 
 const SensorText = styled.span`
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 900;
   line-height: 1;
   margin-bottom: -7px;
+  font-family: 'Poppins', sans-serif;
+  color: rgba(0, 22, 99, 0.85);
+`;
+
+const SensorField = styled.span`
+  font-family: 'Poppins', 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  color: rgba(25, 142, 255, 0.95);
+  margin-left: 5px;
 `;
 
 const DataBox = styled.div`
@@ -122,7 +138,17 @@ const DataBox = styled.div`
 `;
 
 const DataList = styled.div`
-  font-size: 28px;
+  font-size: 22px;
   font-weight: bold;
-  padding: 8px 0;
+  padding: 10px 0;
+  line-height: 1;
+
+  &:last-child {
+    margin-top: 5px;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    padding-top: 5;
+  }
 `;

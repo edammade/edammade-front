@@ -10,11 +10,12 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  * {
+  *,
+  span {
     box-sizing: border-box;
     user-select: none;
     line-height: 1.25;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Poppins', 'Noto Sans KR', sans-serif;
   }
 
   img {

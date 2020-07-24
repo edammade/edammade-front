@@ -67,6 +67,7 @@ const DateText = styled.span`
   font-weight: 900;
   font-size: 32px;
   letter-spacing: -0.8px;
+  word-spacing: 5px;
   line-height: 1;
   margin-bottom: -2.5px;
 `;
