@@ -37,4 +37,5 @@ const Container = styled.div`
 
 const ContentWrapper = styled.div`
   padding-top: 25px;
+  display: flex;
 `;
