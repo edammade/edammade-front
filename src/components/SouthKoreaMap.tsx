@@ -131,5 +131,11 @@ const MapSvg = styled.svg`
 
   path {
     fill: #FFE6F7;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      fill: #ffbae9;
+    }
   }
 `;
