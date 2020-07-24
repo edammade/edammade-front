@@ -28,7 +28,7 @@ const Container = styled.div`
   width: 960px;
   height: 100%;
   margin: 0 auto;
-  padding-top: 25px;
+  padding-top: 40px;
 
   @media all and (max-width: 1000px) {
     width: 85%;
@@ -36,6 +36,6 @@ const Container = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  padding-top: 25px;
+  padding-top: 30px;
   display: flex;
 `;
