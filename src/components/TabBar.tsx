@@ -1,20 +1,37 @@
 import React from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
+
+import 'moment/locale/ko';
 
 import RightIcon from '../components/RightIcon';
 
-const TabBar: React.FC = () => {
+interface ITabBar {
+  currentDate: Date;
+  onClickPrevDay: () => void;
+  onClickNextDay: () => void;
+}
+
+const TabBar: React.FC<ITabBar> = ({
+  currentDate,
+  onClickPrevDay,
+  onClickNextDay,
+}) => {
   return (
     <Wrapper>
       <DateBadge>
         <span role="img" aria-labelledby="flower-emoji">🌸</span> 오늘
       </DateBadge>
       <Container>
-        <LeftButton />
+        <LeftButton
+          onClick={onClickPrevDay}
+        />
         <DateText>
-          2020년 07월 24일
+          {moment(currentDate).format('LL')}
         </DateText>
-        <RightButton />
+        <RightButton
+          onClick={onClickNextDay}
+        />
       </Container>
     </Wrapper>
   );
@@ -35,12 +52,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 80%;
-`;
-
-const DateContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
 
 const DateBadge = styled.span`
