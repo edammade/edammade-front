@@ -4,6 +4,7 @@ import moment from 'moment';
 
 import 'moment/locale/ko';
 
+import Badge from '../components/Badge';
 import RightIcon from '../components/RightIcon';
 
 interface IDateSelector {
@@ -54,19 +55,10 @@ const Container = styled.div`
   width: 80%;
 `;
 
-const DateBadge = styled.span`
+const DateBadge = styled(Badge)`
   margin-bottom: 15px;
-  padding: 12px 20px;
-  padding-bottom: 9px;
-  border-radius: 36px;
-  background-color: #FF6FAF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  font-weight: bold;
   color: white;
-  font-size: 19px;
+  background-color: #FF6FAF;
   text-shadow: 5px 5px 16px rgba(255, 43, 161, 0.5);
 `;
 
