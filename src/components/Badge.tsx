@@ -4,12 +4,18 @@ import styled from 'styled-components';
 interface IBadge {
   className?: string;
   children: React.ReactNode;
+  onClick?: () => void;
 }
 
-const Badge: React.FC<IBadge> = ({ className, children }) => {
+const Badge: React.FC<IBadge> = ({
+  className,
+  children,
+  onClick,
+}) => {
   return (
     <BadgeContainer
       className={className}
+      onClick={onClick}
     >
       <span role="img" aria-labelledby="flower-emoji">🌸</span>
       {children}

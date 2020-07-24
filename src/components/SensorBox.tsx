@@ -4,12 +4,12 @@ import styled from 'styled-components';
 
 interface ISensorBox {
   value: number;
-  currentArea: string;
+  updateAt: any;
 }
 
 const SensorBox: React.FC<ISensorBox> = ({
   value,
-  currentArea,
+  updateAt,
 }) => {
   const {
     countUp: countedValue,
@@ -19,7 +19,7 @@ const SensorBox: React.FC<ISensorBox> = ({
     duration: 1.5,
   });
 
-  useEffect(startCounting, [currentArea]);
+  useEffect(startCounting, [updateAt]);
 
   return (
     <SensorBoxContainer>

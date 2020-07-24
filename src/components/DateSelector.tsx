@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import moment from 'moment';
 
 import 'moment/locale/ko';
@@ -7,21 +7,45 @@ import 'moment/locale/ko';
 import Badge from '../components/Badge';
 import RightIcon from '../components/RightIcon';
 
+import { DAYS } from '../utils/constants';
+
 interface IDateSelector {
   currentDate: Date;
-  onClickPrevDay: () => void;
-  onClickNextDay: () => void;
+  setCurrentDate: (value: Date) => void;
 }
 
 const DateSelector: React.FC<IDateSelector> = ({
   currentDate,
-  onClickPrevDay,
-  onClickNextDay,
+  setCurrentDate,
 }) => {
+  const today = new Date();
+  const gapTime = currentDate.valueOf() - today.valueOf();
+  const gapDays = Math.ceil(gapTime / DAYS);
+
+  const onClickPrevDay = () =>
+    setCurrentDate(new Date(currentDate.getTime() - DAYS));
+  const onClickNextDay = () =>
+    setCurrentDate(new Date(currentDate.getTime() + DAYS));
+  const onClickReset = () =>
+    gapDays && setCurrentDate(new Date());
+
+  const badgeText = (() => {
+    if (!gapDays) {
+      return '오늘';
+    }
+    if (gapDays < 0) {
+      return `${Math.abs(gapDays)}일 전`;
+    }
+    return `${gapDays}일 후`;
+  })();
+
   return (
     <Wrapper>
-      <DateBadge>
-        오늘
+      <DateBadge
+        gapDays={gapDays}
+        onClick={onClickReset}
+      >
+        {badgeText}
       </DateBadge>
       <Container>
         <LeftButton
@@ -55,12 +79,25 @@ const Container = styled.div`
   width: 80%;
 `;
 
-const DateBadge = styled(Badge)`
-  margin-bottom: 15px;
+interface IDateBadge {
+  gapDays?: number;
+}
+
+const DateBadge = styled(Badge)<IDateBadge>`
+  margin-bottom: 13px;
   color: white;
   background-color: #FF6FAF;
   text-shadow: 5px 5px 16px rgba(255, 43, 161, 0.5);
   box-shadow: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+
+  ${({ gapDays = 0 }) => gapDays && css`
+    text-shadow: none;
+    background-color: transparent;
+    border: 2px solid #FF6FAF;
+    color: #ff59a3;
+  `};
 `;
 
 const DateText = styled.span`

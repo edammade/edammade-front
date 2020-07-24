@@ -17,7 +17,7 @@ const areaBadgeLocations: {
 } = {
   "서울특별시": { top: 90, left: 170 },
   "부산광역시": { top: 400, left: 180 },
-  "대구광역시": { top: 290, left: 60 },
+  "대구광역시": { top: 290, left: 160 },
   "인천광역시": { top: 90, left: 120 },
   "광주광역시": { top: 400, left: 180 },
   "대전광역시": { top: 230, left: 150 },

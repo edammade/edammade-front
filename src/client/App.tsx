@@ -8,15 +8,8 @@ import DateSelector from '../components/DateSelector';
 import SensorBox from '../components/SensorBox';
 import SouthKoreaMap from '../components/SouthKoreaMap';
 
-const DAYS = 1000 * 60 * 60 * 24;
-
 const App: React.FC = () => {
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
-  const onClickPrevDay = () =>
-    setCurrentDate(new Date(currentDate.getTime() - DAYS));
-  const onClickNextDay = () =>
-    setCurrentDate(new Date(currentDate.getTime() + DAYS));
-
   const [currentArea, setCurrentArea] = useState<string>('서울특별시');
 
   return (
@@ -30,8 +23,7 @@ const App: React.FC = () => {
         <RightSection>
           <DateSelector
             currentDate={currentDate}
-            onClickPrevDay={onClickPrevDay}
-            onClickNextDay={onClickNextDay}
+            setCurrentDate={setCurrentDate}
           />
           <AreaContainer>
             <AreaName>
@@ -40,15 +32,15 @@ const App: React.FC = () => {
             <SensorList>
               <SensorBox
                 value={17}
-                currentArea={currentArea}
+                updateAt={currentArea + currentDate}
               />
               <SensorBox
                 value={124}
-                currentArea={currentArea}
+                updateAt={currentArea + currentDate}
               />
               <SensorBox
                 value={28}
-                currentArea={currentArea}
+                updateAt={currentArea + currentDate}
               />
             </SensorList>
           </AreaContainer>
