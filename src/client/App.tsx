@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useCountUp } from 'react-countup';
 import styled from 'styled-components';
 
 import GlobalStyle from '../components/GlobalStyle';
@@ -15,6 +16,19 @@ const App: React.FC = () => {
   const onClickNextDay = () => setCurrentDate(new Date(currentDate.getTime() + DAYS));
 
   const [currentArea, setCurrentArea] = useState<string>('서울특별시');
+
+  const { countUp: sensorValueOne, start: startOne } = useCountUp({ end: 17, duration: 1.5 });
+  const { countUp: sensorValueTwo, start: startTwo } = useCountUp({ end: 124, duration: 1.5 });
+  const { countUp: sensorValueThree, start: startThree } = useCountUp({ end: 28, duration: 1.5 });
+
+  useEffect(
+    () => {
+      startOne();
+      startTwo();
+      startThree();
+    },
+    [currentArea],
+  );
 
   return (
     <>
@@ -37,7 +51,7 @@ const App: React.FC = () => {
             <SensorList>
               <SensorBox>
                 <SensorText>
-                  17
+                  {sensorValueOne}
                   <SensorField>
                     ㎍/㎥
                   </SensorField>
@@ -45,7 +59,7 @@ const App: React.FC = () => {
               </SensorBox>
               <SensorBox>
                 <SensorText>
-                  124
+                  {sensorValueTwo}
                   <SensorField>
                     ㎍/㎥
                   </SensorField>
@@ -53,7 +67,7 @@ const App: React.FC = () => {
               </SensorBox>
               <SensorBox>
                 <SensorText>
-                  28
+                  {sensorValueThree}
                   <SensorField>
                     ㎍/㎥
                   </SensorField>
