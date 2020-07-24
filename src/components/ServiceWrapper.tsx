@@ -27,4 +27,8 @@ const Container = styled.div`
   height: 100%;
   margin: 0 auto;
   padding-top: 25px;
+
+  @media all and (max-width: 1000px) {
+    width: 85%;
+  }
 `;
