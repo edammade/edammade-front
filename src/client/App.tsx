@@ -12,8 +12,10 @@ const DAYS = 1000 * 60 * 60 * 24;
 
 const App: React.FC = () => {
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
-  const onClickPrevDay = () => setCurrentDate(new Date(currentDate.getTime() - DAYS));
-  const onClickNextDay = () => setCurrentDate(new Date(currentDate.getTime() + DAYS));
+  const onClickPrevDay = () =>
+    setCurrentDate(new Date(currentDate.getTime() - DAYS));
+  const onClickNextDay = () =>
+    setCurrentDate(new Date(currentDate.getTime() + DAYS));
 
   const [currentArea, setCurrentArea] = useState<string>('서울특별시');
 
