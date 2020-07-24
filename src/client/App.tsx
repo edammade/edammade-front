@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import GlobalStyle from '../components/GlobalStyle';
 import ServiceWrapper from '../components/ServiceWrapper';
-import TabBar from '../components/TabBar';
+import DateSelector from '../components/DateSelector';
 
 import SouthKoreaMap from '../components/SouthKoreaMap';
 
@@ -20,7 +20,7 @@ const App: React.FC = () => {
       <ServiceWrapper>
         <SouthKoreaMap />
         <RightSection>
-          <TabBar
+          <DateSelector
             currentDate={currentDate}
             onClickPrevDay={onClickPrevDay}
             onClickNextDay={onClickNextDay}

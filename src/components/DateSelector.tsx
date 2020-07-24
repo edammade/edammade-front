@@ -6,13 +6,13 @@ import 'moment/locale/ko';
 
 import RightIcon from '../components/RightIcon';
 
-interface ITabBar {
+interface IDateSelector {
   currentDate: Date;
   onClickPrevDay: () => void;
   onClickNextDay: () => void;
 }
 
-const TabBar: React.FC<ITabBar> = ({
+const DateSelector: React.FC<IDateSelector> = ({
   currentDate,
   onClickPrevDay,
   onClickNextDay,
@@ -37,7 +37,7 @@ const TabBar: React.FC<ITabBar> = ({
   );
 };
 
-export default TabBar;
+export default DateSelector;
 
 const Wrapper = styled.div`
   padding: 10px 0;
