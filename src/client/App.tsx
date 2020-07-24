@@ -1,3 +1,4 @@
+import Emoji from 'a11y-react-emoji';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
@@ -45,8 +46,18 @@ const App: React.FC = () => {
             </SensorList>
           </AreaContainer>
           <DataBox>
-            <DataList>💨 풍향 및 풍속</DataList>
-            <DataList>☀️ 현재 기상</DataList>
+            <DataList>
+              <span>
+                <Emoji symbol="💨" label="wind" />{' '}
+                풍향 및 풍속
+              </span>
+            </DataList>
+            <DataList>
+              <span>
+                <Emoji symbol="☀️" label="sun" />{' '}
+                현재 기상
+              </span>
+            </DataList>
           </DataBox>
         </RightSection>
       </ServiceWrapper>

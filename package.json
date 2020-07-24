@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://edammade.akick.kr",
   "dependencies": {
+    "a11y-react-emoji": "^1.1.2",
     "core-js": "^3.6.5",
     "moment": "^2.27.0",
     "react": "^16.13.1",
