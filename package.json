@@ -2,6 +2,7 @@
   "name": "edammade-front",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://edammade.akick.kr",
   "dependencies": {
     "core-js": "^3.6.5",
     "react": "^16.13.1",
